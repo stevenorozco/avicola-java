@@ -9,12 +9,12 @@ package vista;
  *
  * @author invitado
  */
-public class Galpón extends javax.swing.JInternalFrame {
+public class Galpon extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Galpón
      */
-    public Galpón() {
+    public Galpon() {
         initComponents();
     }
 
