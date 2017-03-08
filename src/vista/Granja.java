@@ -4,17 +4,18 @@
  * and open the template in the editor.
  */
 package vista;
-
+import Control.*;
 /**
  *
  * @author invitado
  */
 public class Granja extends javax.swing.JInternalFrame {
-
+    private Controladora miControl;
     /**
      * Creates new form Granja
      */
-    public Granja() {
+    public Granja(Controladora c) {
+        miControl = c;
         initComponents();
     }
 

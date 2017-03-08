@@ -4,17 +4,18 @@
  * and open the template in the editor.
  */
 package vista;
-
+import Control.*;
 /**
  *
  * @author invitado
  */
 public class Galpon extends javax.swing.JInternalFrame {
-
+    private Controladora miControl;
     /**
      * Creates new form Galpón
      */
-    public Galpon() {
+    public Galpon(Controladora c) {
+        miControl = c;
         initComponents();
     }
 

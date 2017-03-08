@@ -5,6 +5,8 @@
  */
 package vista;
 import Control.*;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -64,8 +66,19 @@ public class Empleado extends javax.swing.JInternalFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jLabel2.setText("Teléfono:");
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
 
         jLabel3.setText("Nombre:");
 
@@ -74,10 +87,20 @@ public class Empleado extends javax.swing.JInternalFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Cargo:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Galponero", "Jefe de Granja", "Veterinario", "Auxiliar Veterinario", "Jefe de Planta", "Auxiliares de Planta" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -99,6 +122,11 @@ public class Empleado extends javax.swing.JInternalFrame {
                 jTextField4ActionPerformed(evt);
             }
         });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -108,8 +136,13 @@ public class Empleado extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Modificar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Constultar");
+        jButton3.setText("Consultar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -117,6 +150,11 @@ public class Empleado extends javax.swing.JInternalFrame {
         });
 
         jButton4.setText("Eliminar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Agregar Cursos");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +200,7 @@ public class Empleado extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(117, 117, 117)
                         .addComponent(jButton5)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,16 +264,125 @@ public class Empleado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        try{
+        int id = Integer.parseInt(this.jTextField1.getText());
+        int tel= Integer.parseInt(this.jTextField2.getText());
+        String nom=this.jTextField3.getText();
+        String cargo=(String)this.jComboBox1.getSelectedItem();
+        String nivel=(String)this.jComboBox2.getSelectedItem();
+        String area=(String)this.jComboBox3.getSelectedItem();
+        double sal=Integer.parseInt(this.jTextField4.getText());
+        
+        boolean ingresado=false;
+        
+        ingresado=this.miControl.adicionarEmpleadoP(id, tel, nom, cargo, nivel, area, sal);
+       
+        if(ingresado){
+            JOptionPane.showMessageDialog(this, nom + " se ha ingresado exitosamente. ");
+        }else{
+            JOptionPane.showMessageDialog(this, "El empleado ya existe ");    
+        }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Posibles razones del error: \n-Faltan datos \n-Excediste el límite de 10 digitos en los valores numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }           
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        try{
+        int id = Integer.parseInt(this.jTextField1.getText());
+        JOptionPane.showMessageDialog(this, miControl.consultarEmpleadoP(id));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Posibles razones del error: \n-Faltan datos \n-Excediste el límite de 10 digitos en los valores numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try{
+        int id = Integer.parseInt(this.jTextField1.getText());
+        
+        boolean eliminado = false;
+        
+        eliminado=this.miControl.eliminarEmpleadoP(id);
+        
+        if(eliminado){
+            JOptionPane.showMessageDialog(this, "El empleado se ha eliminado");
+        }else{
+            JOptionPane.showMessageDialog(this, "El empleado no existe");
+        }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Posibles razones del error: \n-Faltan datos \n-Excediste el límite de 10 digitos en los valores numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }           
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
+        int id = Integer.parseInt(this.jTextField1.getText());
+        int tel= Integer.parseInt(this.jTextField2.getText());
+        String nom=this.jTextField3.getText();
+        String cargo=(String)this.jComboBox1.getSelectedItem();
+        String nivel=(String)this.jComboBox2.getSelectedItem();
+        String area=(String)this.jComboBox3.getSelectedItem();
+        double sal=Integer.parseInt(this.jTextField4.getText());
+        
+        boolean modificado = false;
+        
+        modificado = this.miControl.modificarEmpleadoP(id, tel, nom, cargo, nivel, area, sal);
+        
+        if(modificado){
+            JOptionPane.showMessageDialog(this, "El empleado ha sido modificado");
+        }else{
+            JOptionPane.showMessageDialog(this, "El empleado no existe");
+        }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Posibles razones del error: \n-Faltan datos \n-Excediste el límite de 10 digitos en los valores numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        int k = (int) evt.getKeyChar();//k = al valor de la tecla presionada    
+        if (k >= 97 && k <= 122 || k >= 65 && k <= 90) {//Si el caracter ingresado es una letra
+         evt.setKeyChar((char) KeyEvent.VK_CLEAR);//Limpiar el caracter ingresado
+             JOptionPane.showMessageDialog(null, "No puede ingresar letras!!!", "Validando Datos",
+                     JOptionPane.ERROR_MESSAGE);
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        int k = (int) evt.getKeyChar();//k = al valor de la tecla presionada    
+        if (k >= 97 && k <= 122 || k >= 65 && k <= 90) {//Si el caracter ingresado es una letra
+         evt.setKeyChar((char) KeyEvent.VK_CLEAR);//Limpiar el caracter ingresado
+             JOptionPane.showMessageDialog(null, "No puede ingresar letras!!!", "Validando Datos",
+                     JOptionPane.ERROR_MESSAGE);
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        int k = (int) evt.getKeyChar();//k = al valor de la tecla presionada    
+        if (k >= 97 && k <= 122 || k >= 65 && k <= 90) {//Si el caracter ingresado es una letra
+         evt.setKeyChar((char) KeyEvent.VK_CLEAR);//Limpiar el caracter ingresado
+             JOptionPane.showMessageDialog(null, "No puede ingresar letras!!!", "Validando Datos",
+                     JOptionPane.ERROR_MESSAGE);
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+       int k = (int) evt.getKeyChar();//k = al valor de la tecla presionada   
+         if (k > 47 && k < 58) {//Si el caracter ingresado es una letra
+             evt.setKeyChar((char) KeyEvent.VK_CLEAR);//Limpiar el caracter ingresado
+             JOptionPane.showMessageDialog(null, "No puede ingresar numeros!!!", "Validando Datos",
+                     JOptionPane.ERROR_MESSAGE);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        
+        
+        
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
