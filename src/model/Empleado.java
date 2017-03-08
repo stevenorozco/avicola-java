@@ -26,10 +26,6 @@ public class Empleado {
         this.area = area;
     }
 
-    public Empleado(int experiencia, int id, int tel, String nombre, String cargo, String nivelPro, String area, double salario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public int getId() {
         return id;
     }

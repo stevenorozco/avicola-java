@@ -84,5 +84,39 @@ public class Produccion {
         return veterinarios;
     }
     
+    public boolean eliminarEmpleadoP(int id){
+        boolean eliminado=false;
+        Iterator i = empleadosP.iterator();
+        while(i.hasNext()){
+            Empleado empleadoP= (Empleado)i.next();
+            if(empleadoP.getId() == id){
+                eliminado = empleadosP.remove(empleadoP);
+            }
+        }
+        return eliminado;
+    }
     
-}
+    public boolean modificarEmpleadoP(Empleado e){
+        boolean modificado=false;
+        int id = e.getId();
+        Iterator i = empleadosP.iterator();
+        while(i.hasNext()){
+            Empleado empleadoP = (Empleado)i.next();
+            if(empleadoP.getId() == id){
+                
+                empleadoP.setTel(e.getTel());
+                empleadoP.setNombre(e.getNombre());
+                empleadoP.setCargo(e.getCargo());
+                empleadoP.setNivelPro(e.getNivelPro());
+                empleadoP.setArea(e.getArea());
+                empleadoP.setSalario(e.getSalario());
+                
+                modificado = true;
+                
+            }else{
+                modificado = false;
+            }
+        }
+        return modificado;
+    }
+ }
