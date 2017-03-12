@@ -18,7 +18,7 @@ public class Veterinario extends Empleado {
     public Veterinario(int experiencia, int id, int tel, String nombre, String cargo, String nivelPro, String area, double salario) {
         super(id, tel, nombre, cargo, nivelPro, area, salario);
         this.experiencia = experiencia;
-        this.curso = curso;
+        this.curso = new HashSet();
     }
 
     public int getExperiencia() {

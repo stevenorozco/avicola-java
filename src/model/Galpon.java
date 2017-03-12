@@ -16,7 +16,7 @@ public class Galpon {
     private double capacidad;
     private HashSet galponeros;
     private int idGalpon;
-    
+    private HashSet gallinas;
     
     public Galpon(int idGalpon, String eventos, int capacidad){
         this.idGalpon= idGalpon;
@@ -58,7 +58,13 @@ public class Galpon {
         this.idGalpon = idGalpon;
     }   
 
- 
+    public HashSet getGallinas() {
+        return gallinas;
+    }
+
+    public void setGallinas(HashSet gallinas) {
+        this.gallinas = gallinas;
+    }
     
     
     
@@ -85,7 +91,9 @@ public class Galpon {
         return galponeros.add(e);
     }
     
-    
+    public boolean adicionarGallina(Gallina g){
+        return gallinas.add(g);
+    }
     
     public Empleado consultarGalponero(int id){
         Empleado galponero=null;
@@ -99,5 +107,15 @@ public class Galpon {
         return galponero;
     }
     
-   
+    public Gallina consultarGallina(int idGallina){
+        Gallina gallina = null;
+        Iterator i = gallinas.iterator();
+        while(i.hasNext()){
+            Gallina gallinaI = (Gallina)i.next();
+            if(gallinaI.getIdGallina() == idGallina){
+                gallina = gallinaI;
+            }
+        }
+        return gallina;
+    }
 }

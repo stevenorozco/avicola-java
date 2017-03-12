@@ -13,18 +13,15 @@ import model.*;
 public class Controladora {
         Administrativo admin;
         Produccion prod;
-        Lote lot;
         Galpon galpon;
         Granja granja;
         Veterinario veterinario;
-       
 
     public Controladora() {
         admin = new Administrativo();
         prod = new Produccion();
         galpon = null;
         granja = null;
-        lot = null;
         veterinario = null;      
     }
     
@@ -56,7 +53,7 @@ public class Controladora {
     
     public boolean adicionarGallina(int edad, String raza, String novedad, String proceso, int idGallina, int lote){
         Gallina gallina=new Gallina(edad, raza, novedad, proceso, idGallina, lote);
-        return lot.adicionarGallina(gallina);
+        return galpon.adicionarGallina(gallina);
     }
     
     public boolean adicionarGalpon(int idGalpon, String eventos, int capacidad){
@@ -110,7 +107,7 @@ public class Controladora {
     
     public String consultarGallina(int idGallina){
         String gallina;
-        Gallina gall=lot.consultarGallina(idGallina);
+        Gallina gall=galpon.consultarGallina(idGallina);
         if(gall != null){
             gallina = "Edad: "+ gall.getEdad() +
                     "\n" + "Raza: " + gall.getRaza() +
@@ -212,5 +209,13 @@ public class Controladora {
         return prod.modificarEmpleadoP(e);
     }
     
+    public boolean eliminarVeterinario(int id){
+        return prod.eliminarVeterinario(id);
+    }
+    
+    public boolean modificarVetinario(int exp, int id, int tel, String nombre, String cargo, String nivelPro, String area, double salario){
+        Veterinario v =new Veterinario(exp, id, tel, nombre, cargo, nivelPro, area, salario);
+        return prod.modificarVeterinario(v);
+    }
     
 }

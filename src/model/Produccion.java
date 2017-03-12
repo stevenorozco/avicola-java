@@ -17,7 +17,9 @@ public class Produccion {
     
     public Produccion(){
         
-        this.empleadosP = new HashSet();       
+        this.empleadosP = new HashSet(); 
+        this.granja = new HashSet();
+        this.veterinario = new HashSet();
     }
 
     public HashSet getEmpleadosP() {
@@ -118,5 +120,42 @@ public class Produccion {
             }
         }
         return modificado;
+    }
+    
+    public boolean modificarVeterinario(Veterinario v){
+        boolean modificado=false;
+        int id = v.getId();
+        Iterator i = veterinario.iterator();
+        while(i.hasNext()){
+            Veterinario vet = (Veterinario)i.next();
+            if(vet.getId() == id){
+                
+                vet.setExperiencia(v.getExperiencia());
+                vet.setTel(v.getTel());
+                vet.setNombre(v.getNombre());
+                vet.setCargo(v.getCargo());
+                vet.setNivelPro(v.getNivelPro());
+                vet.setArea(v.getArea());
+                vet.setSalario(v.getSalario());
+                
+                modificado = true;
+                
+            }else{
+                modificado = false;
+            }
+        }
+        return modificado;
+    }
+    
+    public boolean eliminarVeterinario(int id){
+        boolean eliminado=false;
+        Iterator i = veterinario.iterator();
+        while(i.hasNext()){
+            Veterinario vet= (Veterinario)i.next();
+            if(vet.getId() == id){
+                eliminado = veterinario.remove(vet);
+            }
+        }
+        return eliminado;
     }
  }

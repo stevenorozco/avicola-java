@@ -21,6 +21,8 @@ public class Empleado extends javax.swing.JInternalFrame {
     public Empleado(Controladora c) {
         miControl = c;
         initComponents();
+        this.jTextField5.setEnabled(false);
+        this.jButton5.setEnabled(false);
     }
 
     /**
@@ -51,6 +53,10 @@ public class Empleado extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setClosable(true);
         setIconifiable(true);
@@ -96,11 +102,6 @@ public class Empleado extends javax.swing.JInternalFrame {
         jLabel4.setText("Cargo:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Galponero", "Jefe de Granja", "Veterinario", "Auxiliar Veterinario", "Jefe de Planta", "Auxiliares de Planta" }));
-        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
-            }
-        });
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -114,6 +115,11 @@ public class Empleado extends javax.swing.JInternalFrame {
         jLabel6.setText("Área:");
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Producción" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Salario:");
 
@@ -163,6 +169,28 @@ public class Empleado extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel8.setText("Años de Experiencia:");
+
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
+
+        jLabel9.setText("Beneficios:");
+
+        jCheckBox1.setText("Tiene beneficios");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -178,16 +206,21 @@ public class Empleado extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField4)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jCheckBox1)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton1)
@@ -198,9 +231,9 @@ public class Empleado extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
+                        .addGap(138, 138, 138)
                         .addComponent(jButton5)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,15 +266,23 @@ public class Empleado extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jCheckBox1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton5)
-                .addGap(24, 24, 24))
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -257,6 +298,18 @@ public class Empleado extends javax.swing.JInternalFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
+        String cargo=(String)this.jComboBox1.getSelectedItem();
+        if(cargo.equals("Veterinario")){
+            this.jTextField5.setEnabled(true);
+            this.jButton5.setEnabled(true);
+        }
+        else{
+            this.jTextField5.setEnabled(false);
+            this.jTextField5.setText("");
+            this.jButton5.setEnabled(false);
+        }
+                    
+        
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
@@ -264,81 +317,135 @@ public class Empleado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
-        int id = Integer.parseInt(this.jTextField1.getText());
-        int tel= Integer.parseInt(this.jTextField2.getText());
-        String nom=this.jTextField3.getText();
-        String cargo=(String)this.jComboBox1.getSelectedItem();
-        String nivel=(String)this.jComboBox2.getSelectedItem();
-        String area=(String)this.jComboBox3.getSelectedItem();
-        double sal=Integer.parseInt(this.jTextField4.getText());
-        
-        boolean ingresado=false;
-        
-        ingresado=this.miControl.adicionarEmpleadoP(id, tel, nom, cargo, nivel, area, sal);
-       
-        if(ingresado){
-            JOptionPane.showMessageDialog(this, nom + " se ha ingresado exitosamente. ");
-        }else{
-            JOptionPane.showMessageDialog(this, "El empleado ya existe ");    
-        }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Posibles razones del error: \n-Faltan datos \n-Excediste el límite de 10 digitos en los valores numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }           
+          try{
+              int exp= Integer.parseInt(this.jTextField5.getText());
+              int id = Integer.parseInt(this.jTextField1.getText());
+              int tel= Integer.parseInt(this.jTextField2.getText());
+              String nom=this.jTextField3.getText();
+              String cargo=(String)this.jComboBox1.getSelectedItem();
+              String nivel=(String)this.jComboBox2.getSelectedItem();
+              String area=(String)this.jComboBox3.getSelectedItem();
+              double sal=Integer.parseInt(this.jTextField4.getText());
+                
+                if(cargo.equals("Veterinario")){
+                    
+                    boolean ingresado = false;
+                    
+                    ingresado=this.miControl.adicionarVeterinario(exp, id, tel, nom, cargo, nivel, area, sal);
+                    
+                    if(ingresado){
+                        JOptionPane.showMessageDialog(this, nom + " se ha ingresado exitosamente. ");
+                    }else{
+                        JOptionPane.showMessageDialog(this, "El empleado ya existe ");
+                    }
+                    
+                }else{
+                    boolean ingresado=false;
+                    
+                    ingresado=this.miControl.adicionarEmpleadoP(id, tel, nom, cargo, nivel, area, sal);
+                    
+                    if(ingresado){
+                        JOptionPane.showMessageDialog(this, nom + " se ha ingresado exitosamente. ");
+                    }else{
+                        JOptionPane.showMessageDialog(this, "El empleado ya existe ");
+                    }
+                }
+          }catch(Exception e){
+              JOptionPane.showMessageDialog(this, "Posibles razones del error: \n-Faltan datos \n-Excediste el limete de 10 digitos en los valores numericos", "ERROR", JOptionPane.ERROR_MESSAGE);
+          }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try{
-        int id = Integer.parseInt(this.jTextField1.getText());
-        JOptionPane.showMessageDialog(this, miControl.consultarEmpleadoP(id));
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Posibles razones del error: \n-Faltan datos \n-Excediste el límite de 10 digitos en los valores numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        String cargo=(String)this.jComboBox1.getSelectedItem();
+        if(cargo.equals("Veterinario")){
+            try{
+            boolean beneficio=this.jCheckBox1.isSelected();    
+            int id = Integer.parseInt(this.jTextField1.getText());
+            JOptionPane.showMessageDialog(this, miControl.consultarVeterinario(id) + "\nBeneficios: "+ beneficio);
+            }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Posibles razones del error: \n-Faltan datos \n-Excediste el limete de 10 digitos en los valores numericos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        }else{
+            try{
+            boolean beneficio=this.jCheckBox1.isSelected();    
+            int id = Integer.parseInt(this.jTextField1.getText());
+            JOptionPane.showMessageDialog(this, miControl.consultarEmpleadoP(id) + "\nBeneficios: "+ beneficio);
+            }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Posibles razones del error: \n-Faltan datos \n-Excediste el limete de 10 digitos en los valores numericos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try{
-        int id = Integer.parseInt(this.jTextField1.getText());
-        
-        boolean eliminado = false;
-        
-        eliminado=this.miControl.eliminarEmpleadoP(id);
-        
-        if(eliminado){
-            JOptionPane.showMessageDialog(this, "El empleado se ha eliminado");
-        }else{
-            JOptionPane.showMessageDialog(this, "El empleado no existe");
-        }
+            String cargo=(String)this.jComboBox1.getSelectedItem();
+            int id = Integer.parseInt(this.jTextField1.getText());
+            boolean eliminado = false;
+            if(cargo.equals("Veterinario")){
+                
+                eliminado = this.miControl.eliminarVeterinario(id);
+                
+                if(eliminado){
+                    JOptionPane.showMessageDialog(this, "El empleado se ha eliminado");
+                }else{
+                    JOptionPane.showMessageDialog(this, "El empleado no existe");
+                }
+            }else{
+                
+                eliminado=this.miControl.eliminarEmpleadoP(id);
+                
+                if(eliminado){
+                    JOptionPane.showMessageDialog(this, "El empleado se ha eliminado");
+                }else{
+                    JOptionPane.showMessageDialog(this, "El empleado no existe");
+                }
+            }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Posibles razones del error: \n-Faltan datos \n-Excediste el límite de 10 digitos en los valores numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Posibles razones del error: \n-Faltan datos \n-Excediste el limete de 10 digitos en los valores numericos", "ERROR", JOptionPane.ERROR_MESSAGE);
         }           
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try{
-        int id = Integer.parseInt(this.jTextField1.getText());
-        int tel= Integer.parseInt(this.jTextField2.getText());
-        String nom=this.jTextField3.getText();
-        String cargo=(String)this.jComboBox1.getSelectedItem();
-        String nivel=(String)this.jComboBox2.getSelectedItem();
-        String area=(String)this.jComboBox3.getSelectedItem();
-        double sal=Integer.parseInt(this.jTextField4.getText());
-        
-        boolean modificado = false;
-        
-        modificado = this.miControl.modificarEmpleadoP(id, tel, nom, cargo, nivel, area, sal);
-        
-        if(modificado){
-            JOptionPane.showMessageDialog(this, "El empleado ha sido modificado");
-        }else{
-            JOptionPane.showMessageDialog(this, "El empleado no existe");
-        }
+            int exp= Integer.parseInt(this.jTextField5.getText());
+            int id = Integer.parseInt(this.jTextField1.getText());
+            int tel= Integer.parseInt(this.jTextField2.getText());
+            String nom=this.jTextField3.getText();
+            String cargo=(String)this.jComboBox1.getSelectedItem();
+            String nivel=(String)this.jComboBox2.getSelectedItem();
+            String area=(String)this.jComboBox3.getSelectedItem();
+            double sal=Integer.parseInt(this.jTextField4.getText());
+            
+            if(cargo.equals("Veterinario")){
+                
+                boolean modificado = false;
+                    
+                modificado=this.miControl.modificarVetinario(exp, id, tel, nom, cargo, nivel, area, sal);
+                    
+                    if(modificado){
+                        JOptionPane.showMessageDialog(this, "El empleado ha sido modificado");
+                    }else{
+                        JOptionPane.showMessageDialog(this, "El empleado no existe");
+                    }
+            }else{
+                boolean modificado = false;
+                
+                modificado = this.miControl.modificarEmpleadoP(id, tel, nom, cargo, nivel, area, sal);
+                
+                if(modificado){
+                    JOptionPane.showMessageDialog(this, "El empleado ha sido modificado");
+                }else{
+                    JOptionPane.showMessageDialog(this, "El empleado no existe");
+                }   
+            }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Posibles razones del error: \n-Faltan datos \n-Excediste el límite de 10 digitos en los valores numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Posibles razones del error: \n-Faltan datos \n-Excediste el limete de 10 digitos en los valores numericos", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -378,11 +485,25 @@ public class Empleado extends javax.swing.JInternalFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3KeyTyped
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         
-        
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        int k = (int) evt.getKeyChar();
+        if (k >= 97 && k <= 122 || k >= 65 && k <= 90){
+            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null, "No puede ingresar letras!!!", "Validando Datos", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jTextField5KeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -391,6 +512,7 @@ public class Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -401,9 +523,12 @@ public class Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

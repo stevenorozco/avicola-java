@@ -109,6 +109,4 @@ public class Gallina {
     public boolean adicionarVacuna(Vacuna v){
         return vacuna.add(v);
     }
-    
-    
 }
